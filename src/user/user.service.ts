@@ -7,8 +7,15 @@ import { PrismaService } from 'src/prisma/prisma.service';
 export class UserService {
   constructor(private prisma: PrismaService) { }
   async create(createUserInput: CreateUserInput) {
+    const data = {
+      name: createUserInput.name,
+      email: createUserInput.email,
+      cpf: createUserInput.cpf,
+      password: createUserInput.password,
+    };
+  
     return await this.prisma.user.create({
-      data: { name: createUserInput.name },
+      data
     });
   }
 

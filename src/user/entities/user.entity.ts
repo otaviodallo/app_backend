@@ -7,4 +7,19 @@ export class User {
 
   @Field()
   name: string
+
+  @Field()
+  email: string
+
+  @Field()
+  cpf: string
+
+  @Field()
+  password: string
+
+  @Field()
+  createdAt: Date
+
+  @Field()
+  updatedAt: Date
 }

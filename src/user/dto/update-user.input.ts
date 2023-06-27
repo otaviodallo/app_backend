@@ -8,4 +8,13 @@ export class UpdateUserInput extends PartialType(CreateUserInput) {
   
   @Field()
   name: string;
+
+  @Field()
+  email: string;
+
+  @Field()
+  cpf: string;
+
+  @Field()
+  password: string
 }
