@@ -13,14 +13,15 @@ export class UserService {
       cpf: createUserInput.cpf,
       password: createUserInput.password,
     };
-  
-    return await this.prisma.user.create({
-      data
-    });
+    return await this.prisma.user.create({ data });
   }
 
   findAll() {
     return this.prisma.user.findMany();
+  }
+
+  find(email: string){
+    return this.prisma.user.findUnique({ where: {email} })
   }
 
   findOne(id: number) {
