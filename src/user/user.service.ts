@@ -11,6 +11,8 @@ export class UserService {
       name: createUserInput.name,
       email: createUserInput.email,
       cpf: createUserInput.cpf,
+      cnpj: createUserInput.cnpj,
+      image: createUserInput.image,
       password: createUserInput.password,
     };
     return await this.prisma.user.create({ data });

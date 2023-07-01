@@ -15,6 +15,9 @@ export class User {
   cpf: string
 
   @Field()
+  cnpj: string
+
+  @Field()
   password: string
 
   @Field()

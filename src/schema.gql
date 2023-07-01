@@ -3,8 +3,10 @@
 # ------------------------------------------------------
 
 input CreateUserInput {
-  cpf: String!
+  cnpj: String
+  cpf: String
   email: String!
+  image: String
   name: String!
   password: String!
 }
@@ -26,14 +28,17 @@ type Query {
 }
 
 input UpdateUserInput {
+  cnpj: String
   cpf: String!
   email: String!
   id: Int!
+  image: String
   name: String!
   password: String!
 }
 
 type User {
+  cnpj: String!
   cpf: String!
   createdAt: DateTime!
   email: String!
