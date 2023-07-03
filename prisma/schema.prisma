@@ -14,8 +14,8 @@ model User {
   id Int @id @default(autoincrement())
   name String
   email String @unique
-  cpf String?
-  cnpj String?
+  cpf String? @unique
+  cnpj String? @unique
   image String?
   balance Int?
   password String
