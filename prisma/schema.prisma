@@ -29,7 +29,9 @@ model Product{
   id Int @id @default(autoincrement())
   name String
   description String?
+  quantity Int
   price Int
   idRestaurant Int
+  image String
   restaurant User @relation(fields: [idRestaurant], references: [id])
 }

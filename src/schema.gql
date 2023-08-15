@@ -2,7 +2,16 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-input CreateUserInput {
+input CreateProductDto {
+  description: String!
+  idRestaurant: Float!
+  image: String!
+  name: String!
+  price: Float!
+  quantity: Float!
+}
+
+input CreateUserDto {
   cnpj: String
   cpf: String
   email: String!
@@ -17,24 +26,38 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 scalar DateTime
 
 type Mutation {
-  createUser(createUserInput: CreateUserInput!): User!
-  removeUser(id: Int!): User!
-  updateUser(updateUserInput: UpdateUserInput!): User!
+  createProduct(createProductDto: CreateProductDto!): Product!
+  createUser(createUserDto: CreateUserDto!): User!
+  removeUser(id: Int!): Product!
+  updateUser(updateUserDto: UpdateProductDto!): Product!
+}
+
+type Product {
+  createdAt: DateTime!
+  description: String!
+  id: Int!
+  image: String!
+  name: String!
+  price: String!
+  quantity: String!
+  updatedAt: DateTime!
 }
 
 type Query {
+  product(id: Int!): Product!
+  products: [Product!]!
   user(id: Int!): User!
   users: [User!]!
 }
 
-input UpdateUserInput {
-  cnpj: String
-  cpf: String!
-  email: String!
+input UpdateProductDto {
+  description: String!
   id: Int!
-  image: String
+  idRestaurant: Float
+  image: String!
   name: String!
-  password: String!
+  price: Float
+  quantity: Float!
 }
 
 type User {

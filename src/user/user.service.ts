@@ -1,19 +1,19 @@
 import { Injectable } from '@nestjs/common';
-import { CreateUserInput } from './dto/create-user.input';
-import { UpdateUserInput } from './dto/update-user.input';
+import { CreateUserDto } from './dto/create-user.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
 import { PrismaService } from '../prisma/prisma.service';
 
 @Injectable()
 export class UserService {
   constructor(private prisma: PrismaService) { }
-  async create(createUserInput: CreateUserInput) {
+  async create(createUserDto: CreateUserDto) {
     const data = {
-      name: createUserInput.name,
-      email: createUserInput.email,
-      cpf: createUserInput.cpf,
-      cnpj: createUserInput.cnpj,
-      image: createUserInput.image,
-      password: createUserInput.password,
+      name: createUserDto.name,
+      email: createUserDto.email,
+      cpf: createUserDto.cpf,
+      cnpj: createUserDto.cnpj,
+      image: createUserDto.image,
+      password: createUserDto.password,
     };
     return await this.prisma.user.create({ data });
   }
@@ -38,10 +38,10 @@ export class UserService {
     return this.prisma.user.findUnique({ where: {id} })
   }
 
-  update(id: number, updateUserInput: UpdateUserInput) {
+  update(id: number, updateUserDto: UpdateUserDto) {
     return this.prisma.user.update({
       where: { id },
-      data: { name: updateUserInput.name }
+      data: { name: updateUserDto.name }
     })
   }
 
