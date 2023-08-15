@@ -144,7 +144,7 @@ describe('UserService', () => {
     });
   })
 
-  describe('findId', () => {
+  describe('findOne', () => {
     it('should return the user with the specified id', async () => {
       const findUnique = jest.spyOn(prismaService.user, 'findUnique').mockResolvedValue(createUserInput as CreateUserInputDto);
       const id = 1;

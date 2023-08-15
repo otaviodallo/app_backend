@@ -1,7 +1,16 @@
 import { Injectable } from '@nestjs/common';
 import { UserService } from 'src/user/user.service';
-import { hashPassword } from "./hashPassword"
 import { AuthExceptions } from './authExceptions';
+import { randomBytes, scrypt as _scrypt } from 'crypto';
+import { promisify } from 'util';
+
+async function hashPassword(password: string){
+    const scrypt = promisify(_scrypt);
+    const salt = randomBytes(8).toString('hex');
+    const hash = (await scrypt(password, salt, 32)) as Buffer;
+    const hashedPassword = salt + '.' + hash.toString('hex');
+    return hashedPassword
+}
 
 @Injectable()
 export class AuthService {
