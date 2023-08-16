@@ -17,15 +17,12 @@ export class ProductService {
     };
     return await this.prisma.product.create({ data });
   }
-
   findAll() {
     return this.prisma.product.findMany();
   }
-
   findOne(id: number) {
     return this.prisma.product.findUnique({ where: {id} })
   }
-
   update(id: number, updateProductInput: UpdateProductDto) {
     return this.prisma.product.update({
       where: { id },
@@ -38,7 +35,6 @@ export class ProductService {
         }
     })
   }
-
   remove(id: number) {
     return this.prisma.product.delete( { where: { id } } )
   }

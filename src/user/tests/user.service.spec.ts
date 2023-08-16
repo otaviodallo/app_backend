@@ -27,6 +27,7 @@ describe('UserService', () => {
     userService = module.get<UserService>(UserService);
     prismaService = module.get<PrismaService>(PrismaService);
   });
+
   const createUserInput = {
     name: 'Otávio Costa Dallo',
     email: 'ocostadallo@gmail.com',
@@ -40,12 +41,8 @@ describe('UserService', () => {
     it('should create a user with the provided data', async () => {
       const create = prismaService.user.create;
       const createdUser = { id: 1, ...createUserInput };
-      jest
-        .spyOn(prismaService.user, 'create')
-        .mockResolvedValue(createdUser as CreateUserInputDto);
-
+      jest.spyOn(prismaService.user, 'create').mockResolvedValue(createdUser as CreateUserInputDto);
       const result = await userService.create(createUserInput);
-
       expect(prismaService.user.create).toHaveBeenCalledWith(
         expect.objectContaining({ data: expect.objectContaining(createUserInput) })
       );
