@@ -41,7 +41,7 @@ export class UserService {
   update(id: number, updateUserDto: UpdateUserDto) {
     return this.prisma.user.update({
       where: { id },
-      data: { name: updateUserDto.name }
+      data: { name: updateUserDto.name, email: updateUserDto.email, cpf: updateUserDto.cpf }
     })
   }
 

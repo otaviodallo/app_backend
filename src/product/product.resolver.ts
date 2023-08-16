@@ -2,7 +2,7 @@ import { Product } from "./entities/product.entity";
 import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
 import { ProductService } from "./product.service";
 import { CreateProductDto } from "./dto/create-product.dto";
-import { UpdateProductDto } from "./dto/updated-product.dto";
+import { UpdateProductDto } from "./dto/update-product.dto";
 
 @Resolver(() => Product)
 export class ProductResolver {
@@ -27,12 +27,12 @@ export class ProductResolver {
     }
 
     @Mutation(() => Product)
-    updateUser(@Args('updateUserDto') updateProductDto: UpdateProductDto) {
+    updateProduct(@Args('updateProductDto') updateProductDto: UpdateProductDto) {
         return this.productService.update(updateProductDto.id, updateProductDto);
     }
 
     @Mutation(() => Product)
-    removeUser(@Args('id', { type: () => Int }) id: number) {
+    removeProduct(@Args('id', { type: () => Int }) id: number) {
         return this.productService.remove(id);
     }
 }

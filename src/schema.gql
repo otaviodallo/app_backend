@@ -28,8 +28,10 @@ scalar DateTime
 type Mutation {
   createProduct(createProductDto: CreateProductDto!): Product!
   createUser(createUserDto: CreateUserDto!): User!
-  removeUser(id: Int!): Product!
-  updateUser(updateUserDto: UpdateProductDto!): Product!
+  removeProduct(id: Int!): Product!
+  removeUser(id: Int!): User!
+  updateProduct(updateProductDto: UpdateProductDto!): Product!
+  updateUser(updateUserDto: UpdateUserDto!): User!
 }
 
 type Product {
@@ -58,6 +60,16 @@ input UpdateProductDto {
   name: String!
   price: Float
   quantity: Float!
+}
+
+input UpdateUserDto {
+  cnpj: String
+  cpf: String!
+  email: String!
+  id: Int!
+  image: String
+  name: String!
+  password: String!
 }
 
 type User {

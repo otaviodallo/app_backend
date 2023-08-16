@@ -30,8 +30,8 @@ model Product{
   name String
   description String?
   quantity Int
-  price Int
-  idRestaurant Int
   image String
+  price Float
+  idRestaurant Int
   restaurant User @relation(fields: [idRestaurant], references: [id])
 }
