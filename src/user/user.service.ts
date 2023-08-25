@@ -26,9 +26,6 @@ export class UserService {
   findCpf(cpf: string){
     return this.prisma.user.findUnique({ where: {cpf} }) 
   }
-  findCnpj(cnpj: string){
-    return this.prisma.user.findUnique({ where: {cnpj} }) 
-  }
   findOne(id: number) {
     return this.prisma.user.findUnique({ where: {id} })
   }

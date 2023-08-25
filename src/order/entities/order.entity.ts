@@ -1,4 +1,4 @@
-import { Field, Int, ObjectType } from "@nestjs/graphql";
+import { ObjectType, Field, Int } from '@nestjs/graphql';
 
 @ObjectType()
 export class Order{
@@ -7,10 +7,13 @@ export class Order{
 
     @Field()
     idBuyer: number;
-
+    
     @Field()
     idRestaurant: number;
 
     @Field()
-    pending: boolean;
+    createdAt: Date
+
+    @Field()
+    updatedAt: Date
 }

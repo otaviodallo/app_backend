@@ -78,6 +78,7 @@ type User {
   createdAt: DateTime!
   email: String!
   id: Int!
+  image: String!
   name: String!
   password: String!
   updatedAt: DateTime!
