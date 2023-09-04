@@ -21,6 +21,9 @@ export class Product {
   image: string
 
   @Field()
+  idRestaurant: number
+
+  @Field()
   createdAt: Date
 
   @Field()
