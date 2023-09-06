@@ -13,13 +13,13 @@ export class UpdateProjectDto extends PartialType(CreateProjectDto) {
   valor: string;
 
   @Field()
-  status: boolean;
+  status: string;
 
   @Field()
   contaFinanceira: string;
 
   @Field()
-  cr: number;
+  cr: string;
 
   @Field()
   parcelas: number

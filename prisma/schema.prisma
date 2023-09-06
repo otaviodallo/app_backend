@@ -17,7 +17,7 @@ model Usuario {
 model Projeto {
   id Int @id @default(autoincrement())
   contrato String @unique
-  cr Int @unique
+  cr String @unique
   valor String
   status String
   nome String

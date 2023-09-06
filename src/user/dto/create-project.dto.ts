@@ -9,7 +9,7 @@ export class CreateProjectDto {
   contrato: string;
 
   @Field()
-  cr: number;
+  cr: string;
 
   @Field()
   valor: string;

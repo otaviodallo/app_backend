@@ -26,7 +26,7 @@ export class ProjectService {
   findByContrato(contrato: string){
     return this.prisma.projeto.findUnique({ where: {contrato} })
   }
-  findByCr(cr: number){
+  findByCr(cr: string){
     return this.prisma.projeto.findUnique({ where: {cr} }) 
   }
   findOne(id: number) {
