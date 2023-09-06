@@ -1,5 +1,5 @@
 import { BadRequestException, Injectable } from "@nestjs/common"
-import { UserService } from "src/user/user.service";
+import { UserService } from "src/user/project.service";
 
 @Injectable()
 export class AuthExceptions {

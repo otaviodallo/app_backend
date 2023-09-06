@@ -7,63 +7,66 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
+model Usuario {
   id Int @id @default(autoincrement())
-  name String
-  email String @unique
-  cpf String? @unique
-  image String?
-  balance Int?
+  nomeDoUsuario String
+  nome String
   password String
-  isAdmin Boolean?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @default(now())
-  orders Order[]
 }
 
-model Restaurant{
+model Projeto {
+  id Int @id @default(autoincrement())
+  contrato String @unique
+  cr Int @unique
+  valor String
+  status String
+  nome String
+  coordenador String
+  parcelas Int
+  escolaId Int
+  empresaId Int
+  parcela Parcela[]
+  empresas Empresa @relation(fields: [empresaId], references: [id])
+  escolas Escola @relation(fields: [escolaId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+}
+
+model Parcela{
+  id Int @id @default(autoincrement())
+  notaFiscal String
+  valor String
+  situacaoPgto String
+  liquidado Boolean
+  diasPgtoComAtraso Int
+  diasEmAtraso String
+  RPS String
+  mesCompetencia String
+  mesReferencia String
+  contaFinanceira String
+  vencimento DateTime
+  dataLiquidacao DateTime
+  projetoId Int
+  projeto Projeto @relation(fields: [projetoId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+}
+
+model Empresa{
   id Int @id @default(autoincrement())
   name String
-  email String
   cnpj String
-  adress String
-  password String
+  razaoSocial String
+  emailFinanceiro String
+  projetos Projeto[]
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
-  products Product[]
-  orders Order[]
 }
 
-model Product{
+model Escola{
   id Int @id @default(autoincrement())
-  name String
-  description String?
-  quantity Int
-  image String
-  price Float
-  idRestaurant Int
+  nome String
+  projetos Projeto[]
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
-  restaurant Restaurant @relation(fields: [idRestaurant], references: [id])
-  orderProduct OrderProduct[]
-}
-
-model Order{
-  id Int @id @default(autoincrement())
-  idBuyer Int
-  idRestaurant Int
-  restaurant Restaurant @relation(fields: [idRestaurant], references: [id])
-  buyer User @relation(fields: [idBuyer], references: [id])
-  createdAt DateTime @default(now())
-  updatedAt DateTime @default(now())
-  orderProduct OrderProduct[]
-}
-
-model OrderProduct {
-  id Int @id @default(autoincrement())
-  idOrder Int
-  idProduct Int
-  quantity Int
-  order Order @relation(fields: [idOrder], references: [id])
-  product Product @relation(fields: [idProduct], references: [id])
 }
