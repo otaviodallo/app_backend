@@ -2,6 +2,17 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+input CreateEmpresaDto {
+  cnpj: String!
+  emailFinanceiro: String!
+  nome: String!
+  razaoSocial: String!
+}
+
+input CreateEscolaDto {
+  nome: String!
+}
+
 input CreateProjectDto {
   contrato: String!
   coordenador: String!
@@ -14,8 +25,32 @@ input CreateProjectDto {
   valor: String!
 }
 
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Empresa {
+  cnpj: String!
+  createdAt: DateTime!
+  emailFinanceiro: String!
+  id: Int!
+  nome: String!
+  razaoSocial: String!
+  updatedAt: DateTime!
+}
+
+type Escola {
+  id: Int!
+  nome: String!
+}
+
 type Mutation {
+  createEmpresa(createEmpresaDto: CreateEmpresaDto!): Empresa!
+  createEscola(createEscolaDto: CreateEscolaDto!): Escola!
   createProject(createProjectDto: CreateProjectDto!): Projeto!
+  updateEmpresa(updateEmpresaDto: UpdateEmpresaDto!): Empresa!
+  updateEscola(updateEscolaDto: UpdateEscolaDto!): Escola!
   updateUser(updateProjectDto: UpdateProjectDto!): Projeto!
 }
 
@@ -33,8 +68,24 @@ type Projeto {
 }
 
 type Query {
+  empresa(id: Int!): Empresa!
+  empresas: [Empresa!]!
+  escola(id: Int!): Escola!
+  escolas: [Escola!]!
   project(id: Int!): Projeto!
   projects: [Projeto!]!
+}
+
+input UpdateEmpresaDto {
+  cnpj: String!
+  emailFinanceiro: String!
+  nome: String!
+  razaoSocial: String!
+}
+
+input UpdateEscolaDto {
+  name: String!
+  nome: String
 }
 
 input UpdateProjectDto {

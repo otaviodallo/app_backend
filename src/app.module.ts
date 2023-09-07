@@ -3,7 +3,9 @@ import { AppService } from './app.service';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
-import { ProjectModule } from './user/project.module';
+import { EmpresaModule } from './empresa/empresa.module';
+import { ProjectModule } from './projeto/project.module';
+import { EscolaModule } from './escola/escola.module';
 
 @Module({
   imports: [
@@ -12,7 +14,9 @@ import { ProjectModule } from './user/project.module';
     autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
     sortSchema: true,
   }),
-    ProjectModule
+    ProjectModule,
+    EmpresaModule,
+    EscolaModule
   ],
   controllers: [],
   providers: [AppService],
