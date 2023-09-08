@@ -39,14 +39,14 @@ model Parcela{
   situacaoPgto String
   liquidado Boolean
   diasPgtoComAtraso Int
-  diasEmAtraso String
-  RPS String
+  diasEmAtraso Int
+  rps String
   mesCompetencia String
   mesReferencia String
   contaFinanceira String
+  projetoId Int
   vencimento DateTime
   dataLiquidacao DateTime
-  projetoId Int
   projeto Projeto @relation(fields: [projetoId], references: [id])
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())

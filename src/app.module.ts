@@ -6,6 +6,7 @@ import { join } from 'path';
 import { EmpresaModule } from './empresa/empresa.module';
 import { ProjectModule } from './projeto/project.module';
 import { EscolaModule } from './escola/escola.module';
+import { ParcelaModule } from './parcela/parcela.module';
 
 @Module({
   imports: [
@@ -16,7 +17,8 @@ import { EscolaModule } from './escola/escola.module';
   }),
     ProjectModule,
     EmpresaModule,
-    EscolaModule
+    EscolaModule,
+    ParcelaModule
   ],
   controllers: [],
   providers: [AppService],

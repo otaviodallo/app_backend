@@ -36,6 +36,4 @@ export class EmpresaService{
       remove(id: number) {
         return this.prisma.projeto.delete( { where: { id } } )
       }
-
-
 }
