@@ -15,7 +15,7 @@ export class CreateParcelaDto {
     diasEmAtraso: number;
 
     @Field()
-    rps: string;
+    rps: number;
 
     @Field()
     mesCompetencia: string;
@@ -33,10 +33,10 @@ export class CreateParcelaDto {
     dataLiquidacao: string;
 
     @Field()
-    valor: string;
+    valor: number;
 
     @Field()
-    contaFinanceira: string;
+    contaFinanceira: number;
 
     @Field()
     projetoId: number;

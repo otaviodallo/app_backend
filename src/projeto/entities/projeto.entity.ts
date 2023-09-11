@@ -12,7 +12,7 @@ export class Projeto {
   contrato: string
 
   @Field()
-  valor: string
+  valor: number
 
   @Field()
   status: string

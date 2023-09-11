@@ -19,7 +19,7 @@ export class Parcela {
     diasEmAtraso: number;
 
     @Field()
-    rps: string;
+    rps: number;
 
     @Field()
     mesCompetencia: string;
@@ -37,10 +37,10 @@ export class Parcela {
     dataLiquidacao: string;
 
     @Field()
-    valor: string;
+    valor: number;
 
     @Field()
-    contaFinanceira: string;
+    contaFinanceira: number;
 
     @Field()
     projetoId: number;

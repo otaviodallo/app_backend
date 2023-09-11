@@ -39,6 +39,6 @@ export class ParcelaService{
         return this.prisma.parcela.findUnique({ where: {id} })
       }
       remove(id: number) {
-        return this.prisma.projeto.delete( { where: { id } } )
+        return this.prisma.parcela.delete( { where: { id } } )
       }
 }

@@ -14,7 +14,7 @@ input CreateEscolaDto {
 }
 
 input CreateParcelaDto {
-  contaFinanceira: String!
+  contaFinanceira: Float!
   dataLiquidacao: String!
   diasEmAtraso: Float!
   diasPgtoComAtraso: Float!
@@ -23,9 +23,9 @@ input CreateParcelaDto {
   mesReferencia: String!
   notaFiscal: String!
   projetoId: Float!
-  rps: String!
+  rps: Float!
   situacaoPgto: String!
-  valor: String!
+  valor: Float!
   vencimento: String!
 }
 
@@ -38,7 +38,7 @@ input CreateProjectDto {
   nome: String!
   parcelas: Float!
   status: String!
-  valor: String!
+  valor: Float!
 }
 
 """
@@ -66,13 +66,14 @@ type Mutation {
   createEscola(createEscolaDto: CreateEscolaDto!): Escola!
   createParcela(createParcelaDto: CreateParcelaDto!): Parcela!
   createProject(createProjectDto: CreateProjectDto!): Projeto!
+  removeProject(id: Int!): Projeto!
   updateEmpresa(updateEmpresaDto: UpdateEmpresaDto!): Empresa!
   updateEscola(updateEscolaDto: UpdateEscolaDto!): Escola!
-  updateUser(updateProjectDto: UpdateProjectDto!): Projeto!
+  updateProject(updateProjectDto: UpdateProjectDto!): Projeto!
 }
 
 type Parcela {
-  contaFinanceira: String!
+  contaFinanceira: Float!
   dataLiquidacao: String!
   diasEmAtraso: Float!
   diasPgtoComAtraso: Float!
@@ -82,9 +83,9 @@ type Parcela {
   mesReferencia: String!
   notaFiscal: String!
   projetoId: Float!
-  rps: String!
+  rps: Float!
   situacaoPgto: String!
-  valor: String!
+  valor: Float!
   vencimento: String!
 }
 
@@ -98,7 +99,7 @@ type Projeto {
   nome: String!
   parcelas: Float!
   status: String!
-  valor: String!
+  valor: Float!
 }
 
 type Query {
@@ -134,5 +135,5 @@ input UpdateProjectDto {
   nome: String!
   parcelas: Float!
   status: String!
-  valor: String!
+  valor: Float!
 }

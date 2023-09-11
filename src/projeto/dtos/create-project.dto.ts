@@ -12,7 +12,7 @@ export class CreateProjectDto {
   cr: string;
 
   @Field()
-  valor: string;
+  valor: number;
 
   @Field()
   status: string;

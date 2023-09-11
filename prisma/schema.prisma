@@ -18,7 +18,7 @@ model Projeto {
   id Int @id @default(autoincrement())
   contrato String @unique
   cr String @unique
-  valor String
+  valor Int
   status String
   nome String
   coordenador String
@@ -35,15 +35,15 @@ model Projeto {
 model Parcela{
   id Int @id @default(autoincrement())
   notaFiscal String
-  valor String
+  valor Int
   situacaoPgto String
   liquidado Boolean
   diasPgtoComAtraso Int
   diasEmAtraso Int
-  rps String
+  rps Int
   mesCompetencia String
   mesReferencia String
-  contaFinanceira String
+  contaFinanceira Int
   projetoId Int
   vencimento String
   dataLiquidacao String

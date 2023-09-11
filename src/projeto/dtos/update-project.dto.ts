@@ -10,7 +10,7 @@ export class UpdateProjectDto extends PartialType(CreateProjectDto) {
   contrato: string;
 
   @Field()
-  valor: string;
+  valor: number;
 
   @Field()
   status: string;

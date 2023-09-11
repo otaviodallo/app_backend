@@ -28,7 +28,12 @@ export class ProjectResolver {
   }
 
   @Mutation(() => Projeto)
-  updateUser(@Args('updateProjectDto') updateProjectDto: UpdateProjectDto, id: number) {
+  updateProject(@Args('updateProjectDto') updateProjectDto: UpdateProjectDto, id: number) {
     return this.projectService.update(id, updateProjectDto);
+  }
+
+  @Mutation(() => Projeto)
+  removeProject(@Args('id', { type: () => Int }) id: number) {
+    return this.projectService.remove(id);
   }
 }
