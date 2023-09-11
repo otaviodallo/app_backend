@@ -21,7 +21,6 @@ export class ProjectService {
       escolaId: createProjectDto.escolaId
     };
     const project = await this.prisma.projeto.create({ data });
-
     const parcelas = createProjectDto.parcelas as any;
     const valor = createProjectDto.valor as any;
     const novoValor = valor / parcelas;
@@ -39,25 +38,8 @@ export class ProjectService {
           dataLiquidacao: '',
           valor: novoValor,
           contaFinanceira: 53,
-          projetoId: 1
+          projetoId: project.id
     };
-    
-    const createParcelaDto: CreateParcelaDto = {
-      situacaoPgto: parcelaData.situacaoPgto,
-      liquidado: parcelaData.liquidado,
-      diasPgtoComAtraso: parcelaData.diasPgtoComAtraso,
-      diasEmAtraso: parcelaData.diasEmAtraso,
-      rps: parcelaData.rps,
-      mesCompetencia: parcelaData.mesCompetencia,
-      mesReferencia: parcelaData.mesReferencia,
-      notaFiscal: parcelaData.notaFiscal,
-      vencimento: parcelaData.vencimento,
-      dataLiquidacao: parcelaData.dataLiquidacao,
-      valor: parcelaData.valor,
-      contaFinanceira: parcelaData.contaFinanceira,
-      projetoId: parcelaData.projetoId,
-    };
-
     for (let i = 1; i <= parcelas; i++) {
       await this.parcelaService.create(parcelaData)
     }

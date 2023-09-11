@@ -47,7 +47,7 @@ model Parcela{
   projetoId Int
   vencimento String
   dataLiquidacao String
-  projeto Projeto @relation(fields: [projetoId], references: [id])
+  projeto Projeto @relation(fields: [projetoId], references: [id], onDelete: Cascade)
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
 }

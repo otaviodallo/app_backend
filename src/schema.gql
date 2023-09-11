@@ -66,6 +66,7 @@ type Mutation {
   createEscola(createEscolaDto: CreateEscolaDto!): Escola!
   createParcela(createParcelaDto: CreateParcelaDto!): Parcela!
   createProject(createProjectDto: CreateProjectDto!): Projeto!
+  removeEscola(id: Int!): Escola!
   removeProject(id: Int!): Projeto!
   updateEmpresa(updateEmpresaDto: UpdateEmpresaDto!): Empresa!
   updateEscola(updateEscolaDto: UpdateEscolaDto!): Escola!

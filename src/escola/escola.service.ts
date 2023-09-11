@@ -19,12 +19,12 @@ export class EscolaService {
     return this.prisma.escola.findUnique({ where: {id} })
   }
   update(id: number, updateEscolaDto: UpdateEscolaDto) {
-    return this.prisma.projeto.updateMany({
+    return this.prisma.escola.updateMany({
       where: { id },
       data: { nome: updateEscolaDto.nome}
     })
   }
   remove(id: number) {
-    return this.prisma.projeto.delete( { where: { id } } )
+    return this.prisma.escola.delete( { where: { id } } )
   }
 }
