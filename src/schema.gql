@@ -13,6 +13,22 @@ input CreateEscolaDto {
   nome: String!
 }
 
+input CreateParcelaDto {
+  contaFinanceira: String!
+  dataLiquidacao: String!
+  diasEmAtraso: Float!
+  diasPgtoComAtraso: Float!
+  liquidado: Boolean!
+  mesCompetencia: String!
+  mesReferencia: String!
+  notaFiscal: String!
+  projetoId: Float!
+  rps: String!
+  situacaoPgto: String!
+  valor: String!
+  vencimento: String!
+}
+
 input CreateProjectDto {
   contrato: String!
   coordenador: String!
@@ -48,10 +64,28 @@ type Escola {
 type Mutation {
   createEmpresa(createEmpresaDto: CreateEmpresaDto!): Empresa!
   createEscola(createEscolaDto: CreateEscolaDto!): Escola!
+  createParcela(createParcelaDto: CreateParcelaDto!): Parcela!
   createProject(createProjectDto: CreateProjectDto!): Projeto!
   updateEmpresa(updateEmpresaDto: UpdateEmpresaDto!): Empresa!
   updateEscola(updateEscolaDto: UpdateEscolaDto!): Escola!
   updateUser(updateProjectDto: UpdateProjectDto!): Projeto!
+}
+
+type Parcela {
+  contaFinanceira: String!
+  dataLiquidacao: String!
+  diasEmAtraso: Float!
+  diasPgtoComAtraso: Float!
+  id: Int!
+  liquidado: Boolean!
+  mesCompetencia: String!
+  mesReferencia: String!
+  notaFiscal: String!
+  projetoId: Float!
+  rps: String!
+  situacaoPgto: String!
+  valor: String!
+  vencimento: String!
 }
 
 type Projeto {
@@ -72,6 +106,8 @@ type Query {
   empresas: [Empresa!]!
   escola(id: Int!): Escola!
   escolas: [Escola!]!
+  parcela(id: Int!): Parcela!
+  parcelas: [Parcela!]!
   project(id: Int!): Projeto!
   projects: [Projeto!]!
 }

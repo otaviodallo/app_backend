@@ -10,7 +10,7 @@ export class ParcelaResolver {
     ) {}
 
   @Mutation(() => Parcela)
-  createEscola(@Args('createParcelaDto') body: CreateParcelaDto) {
+  createParcela(@Args('createParcelaDto') body: CreateParcelaDto) {
     const parcela = this.parcelaService.create(body);
     return parcela;
   }

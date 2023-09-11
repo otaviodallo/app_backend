@@ -45,8 +45,8 @@ model Parcela{
   mesReferencia String
   contaFinanceira String
   projetoId Int
-  vencimento DateTime
-  dataLiquidacao DateTime
+  vencimento String
+  dataLiquidacao String
   projeto Projeto @relation(fields: [projetoId], references: [id])
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
