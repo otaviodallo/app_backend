@@ -108,7 +108,7 @@ type Query {
   empresas: [Empresa!]!
   escola(id: Int!): Escola!
   escolas: [Escola!]!
-  parcela(id: Int!): Parcela!
+  findParcelasByProjetoId(projetoId: Int!): [Parcela!]!
   parcelas: [Parcela!]!
   project(id: Int!): Projeto!
   projects: [Projeto!]!

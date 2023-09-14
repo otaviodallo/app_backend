@@ -21,7 +21,7 @@ export class EscolaService {
   update(id: number, updateEscolaDto: UpdateEscolaDto) {
     return this.prisma.escola.updateMany({
       where: { id },
-      data: { nome: updateEscolaDto.nome}
+      data: { nome: updateEscolaDto.nome }
     })
   }
   remove(id: number) {

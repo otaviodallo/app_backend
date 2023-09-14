@@ -20,9 +20,14 @@ export class ParcelaResolver {
     return this.parcelaService.findAll();
   }
 
-  @Query(() => Parcela, { name: 'parcela' })
-  findOne(@Args('id', { type: () => Int }) id: number) {
-    return this.parcelaService.findOne(id);
+  // @Query(() => Parcela, { name: 'parcela' })
+  // findOne(@Args('id', { type: () => Int }) id: number) {
+  //   return this.parcelaService.findOne(id);
+  // }
+
+  @Query(() => [Parcela])
+  async findParcelasByProjetoId(@Args('projetoId', { type: () => Int }) projetoId: number) {
+    return this.parcelaService.findByProjetoId(projetoId);
   }
 
 //   @Mutation(() => Parcela)
