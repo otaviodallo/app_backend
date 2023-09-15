@@ -1,0 +1,1 @@
+ALTER DATABASE postgres SET timezone = 'America/Sao_Paulo';

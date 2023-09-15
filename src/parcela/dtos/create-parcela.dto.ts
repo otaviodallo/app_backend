@@ -40,4 +40,10 @@ export class CreateParcelaDto {
 
     @Field()
     projetoId: number;
+
+    @Field()
+    createdAt: string;
+
+    @Field()
+    updatedAt: string;
 }

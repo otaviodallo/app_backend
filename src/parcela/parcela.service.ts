@@ -6,6 +6,7 @@ import { CreateParcelaDto } from "./dtos/create-parcela.dto";
 export class ParcelaService{
     constructor(private prisma: PrismaService) { }
     async create(createParcelaDto: CreateParcelaDto) {
+      const dataAtualLocal = new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' });      
         const data = {
           situacaoPgto: createParcelaDto.situacaoPgto,
           liquidado: createParcelaDto.liquidado,
@@ -19,7 +20,9 @@ export class ParcelaService{
           dataLiquidacao: createParcelaDto.dataLiquidacao,
           valor: createParcelaDto.valor,
           contaFinanceira: createParcelaDto.contaFinanceira,
-          projetoId: createParcelaDto.projetoId
+          projetoId: createParcelaDto.projetoId,
+          createdAt: dataAtualLocal,
+          updatedAt: dataAtualLocal
         };
         return await this.prisma.parcela.create({ data });
       }

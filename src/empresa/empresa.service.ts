@@ -7,11 +7,14 @@ import { UpdateEmpresaDto } from "./dtos/update-empresa.dto";
 export class EmpresaService{
     constructor(private prisma: PrismaService) { }
     async create(createEmpresaDto: CreateEmpresaDto) {
+      const dataAtualLocal = new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' });
         const data = {
           nome: createEmpresaDto.nome,
           cnpj: createEmpresaDto.cnpj,
           razaoSocial: createEmpresaDto.razaoSocial,
-          emailFinanceiro: createEmpresaDto.emailFinanceiro
+          emailFinanceiro: createEmpresaDto.emailFinanceiro,
+          createdAt: dataAtualLocal,
+          updatedAt: dataAtualLocal
         };
         return await this.prisma.empresa.create({ data });
       }

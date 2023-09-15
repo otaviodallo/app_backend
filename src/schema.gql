@@ -15,6 +15,7 @@ input CreateEscolaDto {
 
 input CreateParcelaDto {
   contaFinanceira: Float!
+  createdAt: String!
   dataLiquidacao: String!
   diasEmAtraso: Float!
   diasPgtoComAtraso: Float!
@@ -25,6 +26,7 @@ input CreateParcelaDto {
   projetoId: Float!
   rps: Float!
   situacaoPgto: String!
+  updatedAt: String!
   valor: Float!
   vencimento: String!
 }

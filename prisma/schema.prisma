@@ -1,3 +1,4 @@
+
 generator client {
   provider = "prisma-client-js"
 }
@@ -18,7 +19,7 @@ model Projeto {
   id Int @id @default(autoincrement())
   contrato String @unique
   cr String @unique
-  valor Int
+  valor Float
   status String
   nome String
   coordenador String
@@ -26,16 +27,16 @@ model Projeto {
   escolaId Int
   empresaId Int
   parcela Parcela[]
-  empresas Empresa @relation(fields: [empresaId], references: [id])
-  escolas Escola @relation(fields: [escolaId], references: [id])
-  createdAt DateTime @default(now())
-  updatedAt DateTime @default(now())
+  empresas Empresa @relation(fields: [empresaId], references: [id], onDelete: Cascade)
+  escolas Escola @relation(fields: [escolaId], references: [id], onDelete: Cascade)
+  createdAt String
+  updatedAt String
 }
 
 model Parcela{
   id Int @id @default(autoincrement())
   notaFiscal String
-  valor Int
+  valor Float
   situacaoPgto String
   liquidado Boolean
   diasPgtoComAtraso Int
@@ -48,8 +49,8 @@ model Parcela{
   vencimento String
   dataLiquidacao String
   projeto Projeto @relation(fields: [projetoId], references: [id], onDelete: Cascade)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @default(now())
+  createdAt String
+  updatedAt String
 }
 
 model Empresa{
@@ -59,14 +60,14 @@ model Empresa{
   razaoSocial String @unique
   emailFinanceiro String @unique
   projetos Projeto[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime @default(now())
+  createdAt String
+  updatedAt String
 }
 
 model Escola{
   id Int @id @default(autoincrement())
   nome String
   projetos Projeto[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime @default(now())
+  createdAt String
+  updatedAt String
 }

@@ -2,13 +2,18 @@ import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { CreateEscolaDto } from './dtos/create-escola.dto';
 import { UpdateEscolaDto } from './dtos/update-escola.dto';
+const { DateTime } = require('luxon');
+
 
 @Injectable()
 export class EscolaService {
   constructor(private prisma: PrismaService) { }
   async create(createEscolaDto: CreateEscolaDto) {
+    const dataAtualLocal = new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' });
     const data = {
       nome: createEscolaDto.nome,
+      createdAt: dataAtualLocal,
+      updatedAt: dataAtualLocal
     };
     return await this.prisma.escola.create({ data });
   }

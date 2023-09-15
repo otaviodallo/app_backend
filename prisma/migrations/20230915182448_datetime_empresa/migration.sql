@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "Empresa" ALTER COLUMN "createdAt" DROP DEFAULT,
+ALTER COLUMN "updatedAt" DROP DEFAULT;
