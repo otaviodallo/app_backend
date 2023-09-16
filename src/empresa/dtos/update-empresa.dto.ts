@@ -4,14 +4,14 @@ import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
 @InputType()
 export class UpdateEmpresaDto extends PartialType(CreateEmpresaDto) {
   @Field()
-  nome: string;
+  nome: string
 
   @Field()
-  cnpj: string;
+  cnpj: string
 
   @Field()
-  razaoSocial: string;
+  razaoSocial: string
 
   @Field()
-  emailFinanceiro: string;
+  emailFinanceiro: string
 }

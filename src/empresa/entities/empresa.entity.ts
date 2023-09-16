@@ -18,8 +18,8 @@ export class Empresa {
   emailFinanceiro: string
 
   @Field()
-  createdAt: Date
+  createdAt: string
 
   @Field()
-  updatedAt: Date
+  updatedAt: string
 }

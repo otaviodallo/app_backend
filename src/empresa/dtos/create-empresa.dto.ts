@@ -13,10 +13,4 @@ export class CreateEmpresaDto {
   
     @Field()
     emailFinanceiro: string
-
-    @Field()
-    createdAt: string
-
-    @Field()
-    updatedAt: string
 }
