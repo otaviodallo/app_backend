@@ -13,8 +13,8 @@ export class EmpresaService{
           cnpj: createEmpresaDto.cnpj,
           razaoSocial: createEmpresaDto.razaoSocial,
           emailFinanceiro: createEmpresaDto.emailFinanceiro,
-          createdAt: dataAtualLocal,
-          updatedAt: dataAtualLocal
+          createdAt: createEmpresaDto,
+          updatedAt: createEmpresaDto
         };
         return await this.prisma.empresa.create({ data });
       }
