@@ -96,12 +96,14 @@ type Projeto {
   contrato: String!
   coordenador: String!
   cr: String!
+  createdAt: String!
   empresaId: Float!
   escolaId: Float!
   id: Int!
   nome: String!
   parcelas: Float!
   status: String!
+  updatedAt: String!
   valor: Float!
 }
 

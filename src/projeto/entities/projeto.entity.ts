@@ -31,4 +31,10 @@ export class Projeto {
 
   @Field()
   escolaId: number
+
+  @Field()
+  createdAt: string
+
+  @Field()
+  updatedAt: string
 }
