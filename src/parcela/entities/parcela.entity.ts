@@ -3,6 +3,9 @@ import { UnionMetadata } from "@nestjs/graphql/dist/schema-builder/metadata";
 
 @ObjectType()
 export class Parcela {
+    empresaId(empresaId: any) {
+      throw new Error('Method not implemented.');
+    }
     @Field(() => Int)
     id: number;
 

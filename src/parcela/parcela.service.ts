@@ -38,7 +38,7 @@ export class ParcelaService{
       findByNotaFiscal(notaFiscal: string) {
         return this.prisma.parcela.findMany({ where: {notaFiscal} })
       }
-      findByProjetoId(projetoId: number) {
+      findOne(projetoId: number) {
         return this.prisma.parcela.findMany({ where: { projetoId } })
       }
       remove(id: number) {

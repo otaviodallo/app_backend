@@ -80,6 +80,7 @@ type Parcela {
   mesCompetencia: String!
   mesReferencia: String!
   notaFiscal: String!
+  projeto: Projeto!
   projetoId: Float!
   rps: Float!
   situacaoPgto: String!
@@ -92,7 +93,9 @@ type Projeto {
   coordenador: String!
   cr: String!
   createdAt: String!
+  empresa: Empresa!
   empresaId: Float!
+  escola: Escola!
   escolaId: Float!
   id: Int!
   nome: String!
@@ -107,7 +110,7 @@ type Query {
   empresas: [Empresa!]!
   escola(id: Int!): Escola!
   escolas: [Escola!]!
-  findParcelasByProjetoId(projetoId: Int!): [Parcela!]!
+  parcela(id: Int!): Parcela!
   parcelas: [Parcela!]!
   project(id: Int!): Projeto!
   projects: [Projeto!]!
