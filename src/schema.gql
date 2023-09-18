@@ -67,6 +67,7 @@ type Mutation {
   removeProject(id: Int!): Projeto!
   updateEmpresa(updateEmpresaDto: UpdateEmpresaDto!): Empresa!
   updateEscola(updateEscolaDto: UpdateEscolaDto!): Escola!
+  updateParcela(updateParcelaDto: UpdateParcelaDto!): Parcela!
   updateProject(updateProjectDto: UpdateProjectDto!): Projeto!
 }
 
@@ -126,6 +127,21 @@ input UpdateEmpresaDto {
 input UpdateEscolaDto {
   name: String!
   nome: String
+}
+
+input UpdateParcelaDto {
+  contaFinanceira: Float!
+  dataLiquidacao: String!
+  diasEmAtraso: Float!
+  diasPgtoComAtraso: Float!
+  liquidado: Boolean!
+  mesCompetencia: String!
+  mesReferencia: String!
+  notaFiscal: String!
+  rps: Float!
+  situacaoPgto: String!
+  valor: Float!
+  vencimento: String!
 }
 
 input UpdateProjectDto {

@@ -5,6 +5,7 @@ import { ParcelaService } from './parcela.service';
 import { EmpresaService } from 'src/empresa/empresa.service';
 import { ProjectService } from 'src/projeto/project.service';
 import { Projeto } from 'src/projeto/entities/projeto.entity';
+import { UpdateParcelaDto } from './dtos/update-parcela.dto';
 
 @Resolver(() => Parcela)
 export class ParcelaResolver {
@@ -35,13 +36,8 @@ export class ParcelaResolver {
     return this.parcelaService.findOne(id);
   }
 
-  // @Query(() => [Parcela])
-  // async findParcelasByProjetoId(@Args('projetoId', { type: () => Int }) projetoId: number) {
-  //   return this.parcelaService.findByProjetoId(projetoId);
-  // }
-
-//   @Mutation(() => Parcela)
-//   updateEscola(@Args('updateParcelaDto') updateParcelaDto: UpdateParcelaDto, id: number) {
-//     return this.parcelaService.update(id, updateParcelaDto);
-//   }
+  @Mutation(() => Parcela)
+  updateParcela(@Args('updateParcelaDto') updateParcelaDto: UpdateParcelaDto, id: number) {
+    return this.parcelaService.update(id, updateParcelaDto);
+  }
 }
