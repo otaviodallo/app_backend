@@ -4,6 +4,9 @@ import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
 @InputType()
 export class UpdateProjectDto extends PartialType(CreateProjectDto) {
   @Field()
+  id: number
+
+  @Field()
   nome: string;
 
   @Field()
@@ -16,9 +19,6 @@ export class UpdateProjectDto extends PartialType(CreateProjectDto) {
   status: string;
 
   @Field()
-  contaFinanceira: string;
-
-  @Field()
   cr: string;
 
   @Field()
@@ -26,10 +26,4 @@ export class UpdateProjectDto extends PartialType(CreateProjectDto) {
 
   @Field()
   coordenador: string
-
-  @Field()
-  empresaId: number
-
-  @Field()
-  escolaId: number
 }

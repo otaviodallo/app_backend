@@ -13,4 +13,7 @@ export class CreateEmpresaDto {
   
     @Field()
     emailFinanceiro: string
+
+    @Field()
+    cc: string
 }

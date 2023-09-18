@@ -18,6 +18,9 @@ export class Empresa {
   emailFinanceiro: string
 
   @Field()
+  cc: string
+
+  @Field()
   createdAt: string
 
   @Field()

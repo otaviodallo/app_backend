@@ -20,10 +20,10 @@ model Projeto {
   contrato String @unique
   cr String @unique
   valor Float
-  status String
   nome String
   coordenador String
   parcelas Int
+  filial Int @default(3)
   escolaId Int
   empresaId Int
   parcela Parcela[]
@@ -37,17 +37,19 @@ model Parcela{
   id Int @id @default(autoincrement())
   notaFiscal String
   valor Float
-  situacaoPgto String
-  liquidado Boolean
-  diasPgtoComAtraso Int
-  diasEmAtraso Int
+  status String @default("A faturar")
+  liquidado Boolean @default(false)
+  diasPgtoComAtraso Int @default(0)
+  diasEmAtraso Int @default(0)
   rps Int
-  mesCompetencia String
-  mesReferencia String
+  mesCompetencia Int
+  mesReferencia Int
   contaFinanceira Int
   projetoId Int
   vencimento String
+  formaPagamento String @default("Boleto")
   dataLiquidacao String
+  descricao String
   projeto Projeto @relation(fields: [projetoId], references: [id], onDelete: Cascade)
   createdAt String
   updatedAt String
@@ -59,6 +61,7 @@ model Empresa{
   cnpj String @unique
   razaoSocial String @unique
   emailFinanceiro String @unique
+  cc String
   projetos Projeto[]
   createdAt String
   updatedAt String

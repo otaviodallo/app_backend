@@ -3,6 +3,7 @@
 # ------------------------------------------------------
 
 input CreateEmpresaDto {
+  cc: String!
   cnpj: String!
   emailFinanceiro: String!
   nome: String!
@@ -17,15 +18,13 @@ input CreateParcelaDto {
   contaFinanceira: Float!
   createdAt: String!
   dataLiquidacao: String!
-  diasEmAtraso: Float!
-  diasPgtoComAtraso: Float!
-  liquidado: Boolean!
-  mesCompetencia: String!
-  mesReferencia: String!
+  descricao: String!
+  formaPagamento: String!
+  mesCompetencia: Float!
+  mesReferencia: Float!
   notaFiscal: String!
   projetoId: Float!
   rps: Float!
-  situacaoPgto: String!
   updatedAt: String!
   valor: Float!
   vencimento: String!
@@ -37,13 +36,14 @@ input CreateProjectDto {
   cr: String!
   empresaId: Float!
   escolaId: Float!
+  filial: Float!
   nome: String!
   parcelas: Float!
-  status: String!
   valor: Float!
 }
 
 type Empresa {
+  cc: String!
   cnpj: String!
   createdAt: String!
   emailFinanceiro: String!
@@ -56,6 +56,7 @@ type Empresa {
 type Escola {
   id: Int!
   nome: String!
+  parcelas: [Parcela!]!
 }
 
 type Mutation {
@@ -74,17 +75,20 @@ type Mutation {
 type Parcela {
   contaFinanceira: Float!
   dataLiquidacao: String!
+  descricao: String!
   diasEmAtraso: Float!
   diasPgtoComAtraso: Float!
+  filial: Float!
+  formaPagamento: String!
   id: Int!
   liquidado: Boolean!
-  mesCompetencia: String!
-  mesReferencia: String!
+  mesCompetencia: Float!
+  mesReferencia: Float!
   notaFiscal: String!
   projeto: Projeto!
   projetoId: Float!
   rps: Float!
-  situacaoPgto: String!
+  status: String!
   valor: Float!
   vencimento: String!
 }
@@ -98,10 +102,10 @@ type Projeto {
   empresaId: Float!
   escola: Escola!
   escolaId: Float!
+  filial: Float!
   id: Int!
   nome: String!
   parcelas: Float!
-  status: String!
   updatedAt: String!
   valor: Float!
 }
@@ -113,11 +117,15 @@ type Query {
   escolas: [Escola!]!
   parcela(id: Int!): Parcela!
   parcelas: [Parcela!]!
+  parcelasPorMesCompetencia(mes: Int!): [Parcela!]!
+  parcelasPorMesReferencia(mes: Int!): [Parcela!]!
+  parcelasPorProjetoId(projetoId: Int!): [Parcela!]!
   project(id: Int!): Projeto!
   projects: [Projeto!]!
 }
 
 input UpdateEmpresaDto {
+  cc: String
   cnpj: String!
   emailFinanceiro: String!
   nome: String!
@@ -134,23 +142,26 @@ input UpdateParcelaDto {
   dataLiquidacao: String!
   diasEmAtraso: Float!
   diasPgtoComAtraso: Float!
+  formaPagamento: String!
+  id: Float!
   liquidado: Boolean!
-  mesCompetencia: String!
-  mesReferencia: String!
+  mesCompetencia: Float!
+  mesReferencia: Float!
   notaFiscal: String!
   rps: Float!
-  situacaoPgto: String!
+  status: String!
   valor: Float!
   vencimento: String!
 }
 
 input UpdateProjectDto {
-  contaFinanceira: String!
   contrato: String!
   coordenador: String!
   cr: String!
-  empresaId: Float!
-  escolaId: Float!
+  empresaId: Float
+  escolaId: Float
+  filial: Float
+  id: Float!
   nome: String!
   parcelas: Float!
   status: String!

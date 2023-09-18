@@ -15,10 +15,10 @@ export class CreateProjectDto {
   valor: number;
 
   @Field()
-  status: string;
+  parcelas: number
 
   @Field()
-  parcelas: number
+  filial: number
 
   @Field()
   coordenador: string

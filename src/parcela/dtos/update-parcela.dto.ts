@@ -3,13 +3,16 @@ import { Field, InputType } from "@nestjs/graphql";
 @InputType()
 export class UpdateParcelaDto{
     @Field()
+    id: number
+
+    @Field()
     notaFiscal: string
 
     @Field()
     valor: number
 
     @Field()
-    situacaoPgto: string
+    status: string
 
     @Field()
     liquidado: boolean
@@ -24,10 +27,13 @@ export class UpdateParcelaDto{
     rps: number
 
     @Field()
-    mesCompetencia: string
+    mesCompetencia: number
 
     @Field()
-    mesReferencia: string
+    mesReferencia: number
+
+    @Field()
+    formaPagamento: string
 
     @Field()
     contaFinanceira: number

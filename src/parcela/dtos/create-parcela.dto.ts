@@ -1,27 +1,17 @@
 import { Field, InputType } from "@nestjs/graphql";
+import { Status } from "../enum/enumStatus";
+import { Filial } from "src/projeto/enum/enumFilial";
 
 @InputType()
 export class CreateParcelaDto {
     @Field()
-    situacaoPgto: string;
-
-    @Field()
-    liquidado: boolean;
-
-    @Field()
-    diasPgtoComAtraso: number;
-    
-    @Field()
-    diasEmAtraso: number;
-
-    @Field()
     rps: number;
 
     @Field()
-    mesCompetencia: string;
+    mesCompetencia: number;
 
     @Field()
-    mesReferencia: string;
+    mesReferencia: number;
 
     @Field()
     notaFiscal: string;
@@ -37,6 +27,12 @@ export class CreateParcelaDto {
 
     @Field()
     contaFinanceira: number;
+    
+    @Field()
+    descricao: string
+
+    @Field()
+    formaPagamento: string
 
     @Field()
     projetoId: number;

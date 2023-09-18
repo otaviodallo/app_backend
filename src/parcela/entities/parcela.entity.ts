@@ -1,16 +1,13 @@
 import { Field, Int, ObjectType } from "@nestjs/graphql";
-import { UnionMetadata } from "@nestjs/graphql/dist/schema-builder/metadata";
+import { Filial } from "../../projeto/enum/enumFilial";
 
 @ObjectType()
 export class Parcela {
-    empresaId(empresaId: any) {
-      throw new Error('Method not implemented.');
-    }
     @Field(() => Int)
     id: number;
 
     @Field()
-    situacaoPgto: string;
+    status: string;
 
     @Field()
     liquidado: boolean;
@@ -25,10 +22,10 @@ export class Parcela {
     rps: number;
 
     @Field()
-    mesCompetencia: string;
+    mesCompetencia: number;
 
     @Field()
-    mesReferencia: string;
+    mesReferencia: number;
 
     @Field()
     notaFiscal: string;
@@ -40,10 +37,19 @@ export class Parcela {
     dataLiquidacao: string;
 
     @Field()
+    formaPagamento: string;
+
+    @Field()
     valor: number;
 
     @Field()
     contaFinanceira: number;
+
+    @Field()
+    descricao: string
+
+    @Field()
+    filial: Filial
 
     @Field()
     projetoId: number;

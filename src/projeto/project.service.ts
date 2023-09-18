@@ -4,6 +4,7 @@ import { PrismaService } from '../prisma/prisma.service';
 import { UpdateProjectDto } from './dtos/update-project.dto';
 import { ParcelaService } from 'src/parcela/parcela.service';
 import { CreateParcelaDto } from 'src/parcela/dtos/create-parcela.dto';
+import { formaPagamento } from 'src/parcela/enum/enumPagamento';
 
 @Injectable()
 export class ProjectService {
@@ -14,10 +15,10 @@ export class ProjectService {
       nome: createProjectDto.nome,
       contrato: createProjectDto.contrato,
       valor: createProjectDto.valor,
-      status: createProjectDto.status,
       cr: createProjectDto.cr,
       parcelas: createProjectDto.parcelas,
       coordenador: createProjectDto.coordenador,
+      filial: createProjectDto.filial,
       empresaId: createProjectDto.empresaId,
       escolaId: createProjectDto.escolaId,
       createdAt: dataAtualLocal,
@@ -29,26 +30,23 @@ export class ProjectService {
     const novoValor = valor / parcelas;
 
     const parcelaData: CreateParcelaDto = {
-          situacaoPgto: 'pendente',
-          liquidado: false,
-          diasPgtoComAtraso: 0,
-          diasEmAtraso: 0,
           rps: 23,
-          mesCompetencia: '02',
-          mesReferencia: '05',
-          notaFiscal: '321356',
-          vencimento: '23/05/2025',
+          mesCompetencia: 2,
+          mesReferencia: 5,
+          notaFiscal: '',
+          vencimento: '',
           dataLiquidacao: '',
           valor: novoValor,
           contaFinanceira: 53,
+          descricao: '',
           projetoId: project.id,
+          formaPagamento: formaPagamento.BOLETO,
           createdAt: dataAtualLocal,
           updatedAt: dataAtualLocal
     };
     for (let i = 1; i <= parcelas; i++) {
       await this.parcelaService.create(parcelaData)
     }
-    
     return project
   }
   findAll() {
@@ -63,10 +61,20 @@ export class ProjectService {
   findOne(id: number) {
     return this.prisma.projeto.findUnique({ where: {id} })
   }
+  findAllByEscola(escolaId: number){
+    return this.prisma.projeto.findMany( { where: { escolaId: escolaId } })
+  }
   update(id: number, updateProjectDto: UpdateProjectDto) {
-    return this.prisma.projeto.updateMany({
-      where: { id },
-      data: { nome: updateProjectDto.nome, contrato: updateProjectDto.contrato, valor: updateProjectDto.valor, cr: updateProjectDto.cr, parcelas: updateProjectDto.parcelas, coordenador: updateProjectDto.coordenador}
+    return this.prisma.projeto.update({
+      where: { id: updateProjectDto.id },
+      data: { 
+        nome: updateProjectDto.nome, 
+        contrato: updateProjectDto.contrato, 
+        valor: updateProjectDto.valor, 
+        cr: updateProjectDto.cr, 
+        parcelas: updateProjectDto.parcelas, 
+        coordenador: updateProjectDto.coordenador,
+      }
     })
   }
   remove(id: number) {

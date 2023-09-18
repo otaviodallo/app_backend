@@ -2,6 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { PrismaService } from "src/prisma/prisma.service";
 import { CreateParcelaDto } from "./dtos/create-parcela.dto";
 import { UpdateParcelaDto } from "./dtos/update-parcela.dto";
+import { Projeto } from "@prisma/client";
 
 @Injectable()
 export class ParcelaService{
@@ -9,10 +10,6 @@ export class ParcelaService{
     async create(createParcelaDto: CreateParcelaDto) {
       const dataAtualLocal = new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' });      
         const data = {
-          situacaoPgto: createParcelaDto.situacaoPgto,
-          liquidado: createParcelaDto.liquidado,
-          diasPgtoComAtraso: createParcelaDto.diasPgtoComAtraso,
-          diasEmAtraso: createParcelaDto.diasEmAtraso,
           rps: createParcelaDto.rps,
           mesCompetencia: createParcelaDto.mesCompetencia,
           mesReferencia: createParcelaDto.mesReferencia,
@@ -22,6 +19,7 @@ export class ParcelaService{
           valor: createParcelaDto.valor,
           contaFinanceira: createParcelaDto.contaFinanceira,
           projetoId: createParcelaDto.projetoId,
+          descricao: createParcelaDto.descricao,
           createdAt: dataAtualLocal,
           updatedAt: dataAtualLocal
         };
@@ -30,25 +28,43 @@ export class ParcelaService{
       findAll() {
         return this.prisma.parcela.findMany();
       }
-      findBySituacaoPgto(situacaoPgto: string){
-        return this.prisma.parcela.findMany({ where: {situacaoPgto} })
+      findByStatus(status: string){
+        return this.prisma.parcela.findMany({ where: { status } })
       }
       findByLiquidado(liquidado: boolean){
-        return this.prisma.parcela.findMany({ where: {liquidado} }) 
+        return this.prisma.parcela.findMany({ where: { liquidado } }) 
       }
       findByNotaFiscal(notaFiscal: string) {
-        return this.prisma.parcela.findMany({ where: {notaFiscal} })
+        return this.prisma.parcela.findMany({ where: { notaFiscal } })
       }
       findOne(projetoId: number) {
         return this.prisma.parcela.findMany({ where: { projetoId } })
       }
+      findByMesCompetencia(mes: number){
+        const parcelas = this.prisma.parcela.findMany({ where: { mesCompetencia: mes } })
+      }
+      findByMesReferencia(mes: number){
+        return this.prisma.parcela.findMany({ where: { mesReferencia: mes } })
+      }
+      findAllByProjeto(projetoId: number){
+        return this.prisma.parcela.findMany({ where: { projetoId: projetoId } })
+      }
+      async findParcelasByProjetos(projetos: Projeto[]) {
+        const projetoIds = projetos.map((projeto) => projeto.id);
+        return this.prisma.parcela.findMany({
+          where: {
+            projetoId: {
+              in: projetoIds,
+            },
+          },
+        });
+      }
       update(id: number, updateParcelaDto: UpdateParcelaDto ) {
-        return this.prisma.parcela.updateMany({
-          where: { id },
+        return this.prisma.parcela.update({
+          where: { id: updateParcelaDto.id },
           data: { 
             notaFiscal: updateParcelaDto.notaFiscal, 
             valor: updateParcelaDto.valor, 
-            situacaoPgto: updateParcelaDto.situacaoPgto, 
             liquidado: updateParcelaDto.liquidado, 
             diasPgtoComAtraso: updateParcelaDto.diasPgtoComAtraso, 
             diasEmAtraso: updateParcelaDto.diasEmAtraso, 

@@ -1,4 +1,5 @@
 import { ObjectType, Field, Int } from '@nestjs/graphql';
+import { Filial } from '../enum/enumFilial';
 
 @ObjectType()
 export class Projeto {
@@ -15,9 +16,6 @@ export class Projeto {
   valor: number
 
   @Field()
-  status: string
-
-  @Field()
   cr: string
 
   @Field()
@@ -25,6 +23,9 @@ export class Projeto {
 
   @Field()
   coordenador: string
+
+  @Field()
+  filial: Filial
 
   @Field()
   empresaId: number

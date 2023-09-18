@@ -13,6 +13,7 @@ export class EmpresaService{
           cnpj: createEmpresaDto.cnpj,
           razaoSocial: createEmpresaDto.razaoSocial,
           emailFinanceiro: createEmpresaDto.emailFinanceiro,
+          cc: createEmpresaDto.cc,
           createdAt: dataAtualLocal,
           updatedAt: dataAtualLocal
         };

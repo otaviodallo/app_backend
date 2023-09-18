@@ -4,6 +4,7 @@ import { ParcelaResolver } from './parcela.resolver';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { ProjectService } from 'src/projeto/project.service';
 import { EmpresaService } from 'src/empresa/empresa.service';
+import { EscolaService } from 'src/escola/escola.service';
 
 @Module({
   providers: [
@@ -11,7 +12,8 @@ import { EmpresaService } from 'src/empresa/empresa.service';
     ParcelaResolver, 
     PrismaService,
     ProjectService,
-    EmpresaService
+    EmpresaService,
+    EscolaService
   ],
 })
 export class ParcelaModule {}
