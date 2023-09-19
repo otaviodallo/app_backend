@@ -41,7 +41,7 @@ export class ParcelaService{
         return this.prisma.parcela.findMany({ where: { projetoId } })
       }
       findByMesCompetencia(mes: number){
-        const parcelas = this.prisma.parcela.findMany({ where: { mesCompetencia: mes } })
+        return this.prisma.parcela.findMany({ where: { mesCompetencia: mes } })
       }
       findByMesReferencia(mes: number){
         return this.prisma.parcela.findMany({ where: { mesReferencia: mes } })

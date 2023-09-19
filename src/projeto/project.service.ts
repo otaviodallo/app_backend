@@ -39,6 +39,7 @@ export class ProjectService {
           valor: novoValor,
           contaFinanceira: 53,
           descricao: '',
+          status: "A faturar",
           projetoId: project.id,
           formaPagamento: formaPagamento.BOLETO,
           createdAt: dataAtualLocal,

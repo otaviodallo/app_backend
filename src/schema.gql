@@ -25,6 +25,7 @@ input CreateParcelaDto {
   notaFiscal: String!
   projetoId: Float!
   rps: Float!
+  status: String!
   updatedAt: String!
   valor: Float!
   vencimento: String!
@@ -64,7 +65,9 @@ type Mutation {
   createEscola(createEscolaDto: CreateEscolaDto!): Escola!
   createParcela(createParcelaDto: CreateParcelaDto!): Parcela!
   createProject(createProjectDto: CreateProjectDto!): Projeto!
+  removeEmpresa(id: Int!): Empresa!
   removeEscola(id: Int!): Escola!
+  removeParcela(id: Int!): Parcela!
   removeProject(id: Int!): Projeto!
   updateEmpresa(updateEmpresaDto: UpdateEmpresaDto!): Empresa!
   updateEscola(updateEscolaDto: UpdateEscolaDto!): Escola!

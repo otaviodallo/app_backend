@@ -31,4 +31,9 @@ export class EmpresaResolver {
   updateEmpresa(@Args('updateEmpresaDto') updateEmpresaDto: UpdateEmpresaDto, id: number) {
     return this.empresaService.update(id, updateEmpresaDto);
   }
+
+  @Mutation(() => Empresa)
+  removeEmpresa(@Args('id', { type: () => Int }) id: number) {
+    return this.empresaService.remove(id);
+  }
 }

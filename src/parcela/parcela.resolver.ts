@@ -46,4 +46,8 @@ export class ParcelaResolver {
   updateParcela(@Args('updateParcelaDto') updateParcelaDto: UpdateParcelaDto, id: number) {
     return this.parcelaService.update(id, updateParcelaDto);
   }
+  @Mutation(() => Parcela)
+  removeParcela(@Args('id', { type: () => Int }) id: number) {
+    return this.parcelaService.remove(id);
+  }
 }

@@ -1,3 +1,4 @@
+import { IsNotEmpty } from '@nestjs/class-validator';
 import { InputType, Field } from '@nestjs/graphql';
 
 @InputType()
@@ -6,19 +7,23 @@ export class CreateProjectDto {
   nome: string;
 
   @Field()
+  @IsNotEmpty()
   contrato: string;
 
   @Field()
+  @IsNotEmpty()
   cr: string;
 
+  @Field()
+  @IsNotEmpty()
+  filial: number
+  
   @Field()
   valor: number;
 
   @Field()
   parcelas: number
 
-  @Field()
-  filial: number
 
   @Field()
   coordenador: string

@@ -26,6 +26,9 @@ export class CreateParcelaDto {
     valor: number;
 
     @Field()
+    status: string
+
+    @Field()
     contaFinanceira: number;
     
     @Field()
