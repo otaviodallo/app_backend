@@ -59,7 +59,8 @@ export class ParcelaService{
           },
         });
       }
-      update(id: number, updateParcelaDto: UpdateParcelaDto ) {
+      update(updateParcelaDto: UpdateParcelaDto ) {
+        const dataAtualLocal = new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' });     
         return this.prisma.parcela.update({
           where: { id: updateParcelaDto.id },
           data: { 
@@ -73,7 +74,8 @@ export class ParcelaService{
             mesReferencia: updateParcelaDto.mesReferencia, 
             contaFinanceira: updateParcelaDto.contaFinanceira,
             vencimento: updateParcelaDto.vencimento,
-            dataLiquidacao: updateParcelaDto.dataLiquidacao 
+            dataLiquidacao: updateParcelaDto.dataLiquidacao,
+            updatedAt: dataAtualLocal
           }
         })
       }

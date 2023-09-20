@@ -39,6 +39,6 @@ export class EscolaResolver {
   async resolveParcelas(@Parent() escola: Escola) {
     const projetos = await this.projectService.findAllByEscola(escola.id);
     const parcelas = await this.parcelaService.findParcelasByProjetos(projetos);
-    return parcelas;
+    return parcelas
   }
 }

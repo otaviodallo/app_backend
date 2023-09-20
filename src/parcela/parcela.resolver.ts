@@ -43,8 +43,8 @@ export class ParcelaResolver {
     return this.parcelaService.findAllByProjeto(projetoId);
   }
   @Mutation(() => Parcela)
-  updateParcela(@Args('updateParcelaDto') updateParcelaDto: UpdateParcelaDto, id: number) {
-    return this.parcelaService.update(id, updateParcelaDto);
+  updateParcela(@Args('updateParcelaDto') updateParcelaDto: UpdateParcelaDto) {
+    return this.parcelaService.update(updateParcelaDto);
   }
   @Mutation(() => Parcela)
   removeParcela(@Args('id', { type: () => Int }) id: number) {
