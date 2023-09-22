@@ -11,7 +11,7 @@ export class ParcelaResolver {
   constructor(
     private readonly parcelaService: ParcelaService,
     private readonly projectService: ProjectService
-  ) { }
+  ) {}
 
   @Mutation(() => Parcela)
   createParcela(@Args('createParcelaDto') body: CreateParcelaDto) {

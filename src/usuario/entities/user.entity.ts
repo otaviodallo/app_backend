@@ -13,4 +13,10 @@ export class User{
 
     @Field()
     password: string;
+
+    @Field()
+    createdAt: string
+
+    @Field()
+    updatedAt: string
 }

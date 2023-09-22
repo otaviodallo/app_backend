@@ -10,9 +10,12 @@ datasource db {
 
 model Usuario {
   id Int @id @default(autoincrement())
-  nomeDoUsuario String
+  email String
   nome String
   password String
+  cpf String
+  createdAt String  
+  updatedAt String
 }
 
 model Projeto {

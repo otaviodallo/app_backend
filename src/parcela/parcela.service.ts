@@ -59,7 +59,7 @@ export class ParcelaService{
           },
         });
       }
-      update(updateParcelaDto: UpdateParcelaDto ) {
+      update(updateParcelaDto: UpdateParcelaDto) {
         const dataAtualLocal = new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' });     
         return this.prisma.parcela.update({
           where: { id: updateParcelaDto.id },
