@@ -1,14 +1,16 @@
 import { Args, Mutation, Resolver } from "@nestjs/graphql";
 import { User } from "./entities/user.entity";
-import { UserService } from "./user.service";
 import { CreateUserDto } from "./dtos/createUser.dto";
+import { AuthService } from "src/auth/auth.service";
 
 @Resolver(() => User)
 export class UserResolver {
-    constructor(private readonly userService: UserService){}
+    constructor(
+      private readonly authService: AuthService
+      ){}
     @Mutation(() => User)
-    createUser(@Args('createUserDto') body: CreateUserDto) {
-        const user = this.userService.create(body)
+    createUser(@Args('createUser') body: CreateUserDto) {
+        const user = this.authService.signUp(body)
         return user;
   }
 }
