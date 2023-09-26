@@ -38,6 +38,11 @@ export class ParcelaResolver {
   async findParcelasByMesReferencia(@Args('mes', { type: () => Int }) mes: number) {
     return this.parcelaService.findByMesReferencia(mes);
   }
+  @Query(() => [Parcela], { name: 'parcelasLiquidadas' })
+  async findParcelasLiquidadas(@Args('liquidado', { type: () => Boolean }) liquidado: boolean) {
+    return this.parcelaService.findByLiquidado(liquidado);
+  }
+
   @Query(() => [Parcela], { name: 'parcelasPorProjetoId' })
   async findParcelasByProjetoId(@Args('projetoId', { type: () => Int }) projetoId: number) {
     return this.parcelaService.findAllByProjeto(projetoId);

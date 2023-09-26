@@ -32,7 +32,7 @@ export class ParcelaService{
         return this.prisma.parcela.findMany({ where: { status } })
       }
       findByLiquidado(liquidado: boolean){
-        return this.prisma.parcela.findMany({ where: { liquidado } }) 
+        return this.prisma.parcela.findMany({ where: { liquidado: true } }) 
       }
       findByNotaFiscal(notaFiscal: string) {
         return this.prisma.parcela.findMany({ where: { notaFiscal } })
@@ -70,6 +70,7 @@ export class ParcelaService{
             diasPgtoComAtraso: updateParcelaDto.diasPgtoComAtraso, 
             diasEmAtraso: updateParcelaDto.diasEmAtraso, 
             rps: updateParcelaDto.rps, 
+            status: updateParcelaDto.status,
             mesCompetencia: updateParcelaDto.mesCompetencia, 
             mesReferencia: updateParcelaDto.mesReferencia, 
             contaFinanceira: updateParcelaDto.contaFinanceira,

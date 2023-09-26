@@ -120,6 +120,7 @@ type Query {
   escolas: [Escola!]!
   parcela(id: Int!): Parcela!
   parcelas: [Parcela!]!
+  parcelasLiquidadas(liquidado: Boolean!): [Parcela!]!
   parcelasPorMesCompetencia(mes: Int!): [Parcela!]!
   parcelasPorMesReferencia(mes: Int!): [Parcela!]!
   parcelasPorProjetoId(projetoId: Int!): [Parcela!]!
