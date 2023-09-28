@@ -132,6 +132,7 @@ input UpdateEmpresaDto {
   cc: String
   cnpj: String!
   emailFinanceiro: String!
+  id: Float!
   nome: String!
   razaoSocial: String!
 }

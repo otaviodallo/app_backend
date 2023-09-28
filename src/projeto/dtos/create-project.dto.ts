@@ -24,7 +24,6 @@ export class CreateProjectDto {
   @Field()
   parcelas: number
 
-
   @Field()
   coordenador: string
 

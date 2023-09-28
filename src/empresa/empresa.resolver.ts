@@ -28,8 +28,8 @@ export class EmpresaResolver {
   }
 
   @Mutation(() => Empresa)
-  updateEmpresa(@Args('updateEmpresaDto') updateEmpresaDto: UpdateEmpresaDto, id: number) {
-    return this.empresaService.update(id, updateEmpresaDto);
+  updateEmpresa(@Args('updateEmpresaDto') updateEmpresaDto: UpdateEmpresaDto) {
+    return this.empresaService.update(updateEmpresaDto);
   }
 
   @Mutation(() => Empresa)

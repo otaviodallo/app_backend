@@ -31,9 +31,9 @@ export class EmpresaService{
       findOne(id: number) {
         return this.prisma.empresa.findUnique({ where: {id} })
       }
-      update(id: number, updateEmpresaDto: UpdateEmpresaDto) {
-        return this.prisma.empresa.updateMany({
-          where: { id },
+      update(updateEmpresaDto: UpdateEmpresaDto) {
+        return this.prisma.empresa.update({
+          where: { id: updateEmpresaDto.id },
           data: { nome: updateEmpresaDto.nome, cnpj: updateEmpresaDto.cnpj, razaoSocial: updateEmpresaDto.razaoSocial, emailFinanceiro: updateEmpresaDto.emailFinanceiro }
         })
       }
