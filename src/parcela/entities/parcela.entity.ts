@@ -28,6 +28,12 @@ export class Parcela {
     mesReferencia: number;
 
     @Field()
+    mesVencimento: number;
+
+    @Field()
+    anoVencimento: number;
+
+    @Field()
     notaFiscal: string;
 
     @Field()
@@ -46,10 +52,10 @@ export class Parcela {
     contaFinanceira: number;
 
     @Field()
-    descricao: string
+    descricao: string;
 
     @Field()
-    filial: Filial
+    filial: Filial;
 
     @Field()
     projetoId: number;

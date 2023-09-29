@@ -2,7 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { PrismaService } from "src/prisma/prisma.service";
 import { CreateParcelaDto } from "./dtos/create-parcela.dto";
 import { UpdateParcelaDto } from "./dtos/update-parcela.dto";
-import { Projeto } from "@prisma/client";
+import { Projeto } from "src/projeto/entities/projeto.entity";
 
 @Injectable()
 export class ParcelaService{
@@ -15,6 +15,8 @@ export class ParcelaService{
           mesReferencia: createParcelaDto.mesReferencia,
           notaFiscal: createParcelaDto.notaFiscal,
           vencimento: createParcelaDto.vencimento,
+          mesVencimento: createParcelaDto.mesVencimento,
+          anoVencimento: createParcelaDto.anoVencimento,
           dataLiquidacao: createParcelaDto.dataLiquidacao,
           valor: createParcelaDto.valor,
           contaFinanceira: createParcelaDto.contaFinanceira,

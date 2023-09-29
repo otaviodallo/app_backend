@@ -15,6 +15,7 @@ input CreateEscolaDto {
 }
 
 input CreateParcelaDto {
+  anoVencimento: Float!
   contaFinanceira: Float!
   createdAt: String!
   dataLiquidacao: String!
@@ -22,6 +23,7 @@ input CreateParcelaDto {
   formaPagamento: String!
   mesCompetencia: Float!
   mesReferencia: Float!
+  mesVencimento: Float!
   notaFiscal: String!
   projetoId: Float!
   rps: Float!
@@ -76,6 +78,7 @@ type Mutation {
 }
 
 type Parcela {
+  anoVencimento: Float!
   contaFinanceira: Float!
   dataLiquidacao: String!
   descricao: String!
@@ -87,6 +90,7 @@ type Parcela {
   liquidado: Boolean!
   mesCompetencia: Float!
   mesReferencia: Float!
+  mesVencimento: Float!
   notaFiscal: String!
   projeto: Projeto!
   projetoId: Float!
@@ -143,6 +147,7 @@ input UpdateEscolaDto {
 }
 
 input UpdateParcelaDto {
+  anoVencimento: Float!
   contaFinanceira: Float!
   dataLiquidacao: String!
   diasEmAtraso: Float!
@@ -152,6 +157,7 @@ input UpdateParcelaDto {
   liquidado: Boolean!
   mesCompetencia: Float!
   mesReferencia: Float!
+  mesVencimento: Float!
   notaFiscal: String!
   rps: Float!
   status: String!

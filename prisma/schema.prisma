@@ -47,6 +47,8 @@ model Parcela{
   rps Int
   mesCompetencia Int
   mesReferencia Int
+  mesVencimento Int @default(1)
+  anoVencimento Int @default(1)
   contaFinanceira Int
   projetoId Int
   vencimento String

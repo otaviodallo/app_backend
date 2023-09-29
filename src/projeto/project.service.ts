@@ -33,6 +33,8 @@ export class ProjectService {
           rps: 23,
           mesCompetencia: 2,
           mesReferencia: 5,
+          mesVencimento: 1,
+          anoVencimento: 1,
           notaFiscal: '',
           vencimento: '',
           dataLiquidacao: '',
