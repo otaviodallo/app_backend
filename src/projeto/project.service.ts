@@ -5,6 +5,7 @@ import { UpdateProjectDto } from './dtos/update-project.dto';
 import { ParcelaService } from 'src/parcela/parcela.service';
 import { CreateParcelaDto } from 'src/parcela/dtos/create-parcela.dto';
 import { formaPagamento } from 'src/parcela/enum/enumPagamento';
+import { Projeto } from './entities/projeto.entity';
 
 @Injectable()
 export class ProjectService {
@@ -67,7 +68,10 @@ export class ProjectService {
   findAllByEscola(escolaId: number){
     return this.prisma.projeto.findMany( { where: { escolaId: escolaId } })
   }
-  update(id: number, updateProjectDto: UpdateProjectDto) {
+  findAllByEmpresa(empresaId: number){
+    return this.prisma.projeto.findMany( { where: { empresaId: empresaId } })
+  }
+  update(updateProjectDto: UpdateProjectDto) {
     return this.prisma.projeto.update({
       where: { id: updateProjectDto.id },
       data: { 

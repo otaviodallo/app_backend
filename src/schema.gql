@@ -122,6 +122,8 @@ type Query {
   empresas: [Empresa!]!
   escola(id: Int!): Escola!
   escolas: [Escola!]!
+  findAllByEmpresa(empresaId: Int!): Projeto!
+  findAllByEscola(escolaId: Int!): Projeto!
   parcela(id: Int!): Parcela!
   parcelas: [Parcela!]!
   parcelasLiquidadas(liquidado: Boolean!): [Parcela!]!
@@ -130,6 +132,7 @@ type Query {
   parcelasPorProjetoId(projetoId: Int!): [Parcela!]!
   project(id: Int!): Projeto!
   projects: [Projeto!]!
+  projetoByCr(cr: String!): Projeto!
 }
 
 input UpdateEmpresaDto {

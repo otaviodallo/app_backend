@@ -42,7 +42,6 @@ export class ParcelaResolver {
   async findParcelasLiquidadas(@Args('liquidado', { type: () => Boolean }) liquidado: boolean) {
     return this.parcelaService.findByLiquidado(liquidado);
   }
-
   @Query(() => [Parcela], { name: 'parcelasPorProjetoId' })
   async findParcelasByProjetoId(@Args('projetoId', { type: () => Int }) projetoId: number) {
     return this.parcelaService.findAllByProjeto(projetoId);
