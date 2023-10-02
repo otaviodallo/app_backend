@@ -34,8 +34,6 @@ export class ProjectService {
           rps: 23,
           mesCompetencia: 2,
           mesReferencia: 5,
-          mesVencimento: 1,
-          anoVencimento: 1,
           notaFiscal: '',
           vencimento: '',
           dataLiquidacao: '',
@@ -66,10 +64,10 @@ export class ProjectService {
     return this.prisma.projeto.findUnique({ where: {id} })
   }
   findAllByEscola(escolaId: number){
-    return this.prisma.projeto.findMany( { where: { escolaId: escolaId } })
+    return this.prisma.projeto.findMany( { where: { escolaId } })
   }
   findAllByEmpresa(empresaId: number){
-    return this.prisma.projeto.findMany( { where: { empresaId: empresaId } })
+    return this.prisma.projeto.findMany( { where: { empresaId } })
   }
   update(updateProjectDto: UpdateProjectDto) {
     return this.prisma.projeto.update({

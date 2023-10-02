@@ -41,22 +41,22 @@ export class ProjectResolver {
     return await this.escolaService.findOne(projeto.escolaId);
   }
 
-  @Query(() => Projeto, { name: 'findAllByEmpresa' })
+  @Query(() => [Projeto], { name: 'findAllByEmpresa' })
   findAllByEmpresa(@Args('empresaId', { type: () => Int }) empresaId: number){
     return this.projectService.findAllByEmpresa(empresaId)
   }
 
-  @Query(() => Projeto, { name: 'findAllByEscola' })
+  @Query(() => [Projeto], { name: 'findAllByEscola' })
   findAllByEscola(@Args('escolaId', { type: () => Int }) escolaId: number){
     return this.projectService.findAllByEscola(escolaId)
   }
 
-  @Query(() => Projeto, { name: 'project' })
+  @Query(() => [Projeto], { name: 'project' })
   findOne(@Args('id', { type: () => Int }) id: number) {
     return this.projectService.findOne(id);
   }
 
-  @Query(() => Projeto, { name: 'projetoByCr' })
+  @Query(() => [Projeto], { name: 'projetoByCr' })
   findByCr(@Args('cr', { type: () => String }) cr: string){
     return this.projectService.findByCr(cr)
   }

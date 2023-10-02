@@ -42,9 +42,33 @@ export class ParcelaResolver {
   async findParcelasLiquidadas(@Args('liquidado', { type: () => Boolean }) liquidado: boolean) {
     return this.parcelaService.findByLiquidado(liquidado);
   }
+  @Query(() => [Parcela], { name: 'parcelasVencidas' })
+  findParcelasVencidas() {
+    return this.parcelaService.findParcelasVencidas();
+  }
+  @Query(() => [Parcela], { name: 'parcelasPorNotaFiscal' })
+  async findParcelasByNotaFiscal(@Args('notaFiscal', { type: () => String }) notaFiscal: string) {
+    return this.parcelaService.findByNotaFiscal(notaFiscal);
+  }
   @Query(() => [Parcela], { name: 'parcelasPorProjetoId' })
   async findParcelasByProjetoId(@Args('projetoId', { type: () => Int }) projetoId: number) {
     return this.parcelaService.findAllByProjeto(projetoId);
+  }
+  @Query(() => [Parcela], { name: 'parcelasPorContaFinanceira' })
+  async findParcelasByContaFinanceira(@Args('contaFinanceira', { type: () => Int }) contaFinanceira: number) {
+    return this.parcelaService.findByContaFinanceira(contaFinanceira);
+  }
+  @Query(() => [Parcela], { name: 'parcelasPorAno' })
+  async findParcelasByAno(@Args('ano', { type: () => String }) ano: string){
+    return this.parcelaService.findParcelasByAno(ano)
+  }
+  @Query(() => [Parcela], { name: 'parcelasPorMesAno' })
+  async findParcelasByMesAno(@Args('mesAno', { type: () => String }) mesAno: string){
+    return this.parcelaService.findParcelasByMesAno(mesAno)
+  }
+  @Query(() => [Parcela], { name: 'parcelasPorDiaMesAno' })
+  async findParcelasByDiaMesAno(@Args('diaMesAno', { type: () => String }) diaMesAno: string){
+    return this.parcelaService.findParcelasByDiaMesAno(diaMesAno)
   }
   @Mutation(() => Parcela)
   updateParcela(@Args('updateParcelaDto') updateParcelaDto: UpdateParcelaDto) {

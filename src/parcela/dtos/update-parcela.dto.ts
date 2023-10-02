@@ -31,13 +31,7 @@ export class UpdateParcelaDto{
 
     @Field()
     mesReferencia: number
-
-    @Field()
-    mesVencimento: number
-
-    @Field()
-    anoVencimento: number
-
+    
     @Field()
     formaPagamento: string
 

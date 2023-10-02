@@ -15,7 +15,6 @@ input CreateEscolaDto {
 }
 
 input CreateParcelaDto {
-  anoVencimento: Float!
   contaFinanceira: Float!
   createdAt: String!
   dataLiquidacao: String!
@@ -23,7 +22,6 @@ input CreateParcelaDto {
   formaPagamento: String!
   mesCompetencia: Float!
   mesReferencia: Float!
-  mesVencimento: Float!
   notaFiscal: String!
   projetoId: Float!
   rps: Float!
@@ -78,7 +76,6 @@ type Mutation {
 }
 
 type Parcela {
-  anoVencimento: Float!
   contaFinanceira: Float!
   dataLiquidacao: String!
   descricao: String!
@@ -90,7 +87,6 @@ type Parcela {
   liquidado: Boolean!
   mesCompetencia: Float!
   mesReferencia: Float!
-  mesVencimento: Float!
   notaFiscal: String!
   projeto: Projeto!
   projetoId: Float!
@@ -122,17 +118,23 @@ type Query {
   empresas: [Empresa!]!
   escola(id: Int!): Escola!
   escolas: [Escola!]!
-  findAllByEmpresa(empresaId: Int!): Projeto!
-  findAllByEscola(escolaId: Int!): Projeto!
+  findAllByEmpresa(empresaId: Int!): [Projeto!]!
+  findAllByEscola(escolaId: Int!): [Projeto!]!
   parcela(id: Int!): Parcela!
   parcelas: [Parcela!]!
   parcelasLiquidadas(liquidado: Boolean!): [Parcela!]!
+  parcelasPorAno(ano: String!): [Parcela!]!
+  parcelasPorContaFinanceira(contaFinanceira: Int!): [Parcela!]!
+  parcelasPorDiaMesAno(diaMesAno: String!): [Parcela!]!
+  parcelasPorMesAno(mesAno: String!): [Parcela!]!
   parcelasPorMesCompetencia(mes: Int!): [Parcela!]!
   parcelasPorMesReferencia(mes: Int!): [Parcela!]!
+  parcelasPorNotaFiscal(notaFiscal: String!): [Parcela!]!
   parcelasPorProjetoId(projetoId: Int!): [Parcela!]!
-  project(id: Int!): Projeto!
+  parcelasVencidas: [Parcela!]!
+  project(id: Int!): [Projeto!]!
   projects: [Projeto!]!
-  projetoByCr(cr: String!): Projeto!
+  projetoByCr(cr: String!): [Projeto!]!
 }
 
 input UpdateEmpresaDto {
@@ -150,7 +152,6 @@ input UpdateEscolaDto {
 }
 
 input UpdateParcelaDto {
-  anoVencimento: Float!
   contaFinanceira: Float!
   dataLiquidacao: String!
   diasEmAtraso: Float!
@@ -160,7 +161,6 @@ input UpdateParcelaDto {
   liquidado: Boolean!
   mesCompetencia: Float!
   mesReferencia: Float!
-  mesVencimento: Float!
   notaFiscal: String!
   rps: Float!
   status: String!

@@ -14,12 +14,6 @@ export class CreateParcelaDto {
     mesReferencia: number;
 
     @Field()
-    mesVencimento: number;
-
-    @Field()
-    anoVencimento: number;
-
-    @Field()
     notaFiscal: string;
 
     @Field()
