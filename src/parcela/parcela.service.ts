@@ -5,6 +5,7 @@ import { UpdateParcelaDto } from "./dtos/update-parcela.dto";
 import { Projeto } from "src/projeto/entities/projeto.entity";
 import { Parcela } from "./entities/parcela.entity";
 import { Args, Int } from "@nestjs/graphql";
+import { Status } from "./enum/enumStatus";
 
 @Injectable()
 export class ParcelaService{
@@ -96,6 +97,9 @@ export class ParcelaService{
             ]
           }
         })
+      }
+      findParcelasFaturadasByStatus(status: Status){
+        return this.prisma.parcela.findMany({ where: {status: status} })
       }
       findByContaFinanceira(contaFinanceira: number){
         return this.prisma.parcela.findMany({ where: {contaFinanceira} })

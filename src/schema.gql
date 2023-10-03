@@ -122,6 +122,7 @@ type Query {
   findAllByEscola(escolaId: Int!): [Projeto!]!
   parcela(id: Int!): Parcela!
   parcelas: [Parcela!]!
+  parcelasFaturadas(status: String!): [Parcela!]!
   parcelasLiquidadas(liquidado: Boolean!): [Parcela!]!
   parcelasPorAno(ano: String!): [Parcela!]!
   parcelasPorContaFinanceira(contaFinanceira: Int!): [Parcela!]!

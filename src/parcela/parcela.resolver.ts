@@ -5,6 +5,7 @@ import { ParcelaService } from './parcela.service';
 import { ProjectService } from 'src/projeto/project.service';
 import { Projeto } from 'src/projeto/entities/projeto.entity';
 import { UpdateParcelaDto } from './dtos/update-parcela.dto';
+import { Status } from './enum/enumStatus';
 
 @Resolver(() => Parcela)
 export class ParcelaResolver {
@@ -69,6 +70,10 @@ export class ParcelaResolver {
   @Query(() => [Parcela], { name: 'parcelasPorDiaMesAno' })
   async findParcelasByDiaMesAno(@Args('diaMesAno', { type: () => String }) diaMesAno: string){
     return this.parcelaService.findParcelasByDiaMesAno(diaMesAno)
+  }
+  @Query(() => [Parcela], { name: 'parcelasFaturadas' })
+  async findParcelasFaturadas(@Args('status', { type: () => String }) status: Status){
+    return this.parcelaService.findParcelasFaturadasByStatus(status)
   }
   @Mutation(() => Parcela)
   updateParcela(@Args('updateParcelaDto') updateParcelaDto: UpdateParcelaDto) {
